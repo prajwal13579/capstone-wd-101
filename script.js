@@ -1,5 +1,5 @@
 let input_form = document.getElementById("form");
-const retriveEntries = () => {
+const retriveAll = () => {
   let entries = localStorage.getItem("userEntry");
 
   if (entries) {
@@ -10,13 +10,12 @@ const retriveEntries = () => {
   return entries;
 };
 
-let Entries = retriveEntries();
+let Entries = retriveAll();
 
-const displayEntries = () => {
-  const entries = retriveEntries();
+const displayAll = () => {
+  const entries = retriveAll();
 
-  const rows = entries
-    .map((entry) => {
+  const rows = entries.map((entry) => {
       const name = `<td class="td">${entry.name}</td>`;
       const email = `<td class="td">${entry.email}</td>`;
       const password = `<td class="td">${entry.password}</td>`;
@@ -63,12 +62,12 @@ const saveUserFrom = (event) => {
 
   localStorage.setItem("userEntry", JSON.stringify(Entries));
 
-  displayEntries();
+  displayAll();
 };
 
 input_form.addEventListener("submit", saveUserFrom);
 
-displayEntries();
+displayAll();
 
 
 function getAge(today, birthDate) {
